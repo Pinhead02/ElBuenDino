@@ -24,6 +24,8 @@ public class Personaje {
 	private float speedX;
 	private float speedY;
 	private Rectangle rectBound;
+
+	
 	
 	public int score = 0;
 	
@@ -46,9 +48,6 @@ public class Personaje {
 		normalRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
 		normalRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
 		jumping = Recursos.getResouceImage("data/quake.png");
-		downRunAnim = new Animaciones(90);
-		downRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
-		downRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
 		deathImage = Recursos.getResouceImage("data/quake.png");
 		
 		try {
@@ -83,14 +82,10 @@ public class Personaje {
 				g.drawImage(deathImage, (int) posX, (int) posY, null);
 				break;
 		}
-//		Rectangle bound = getBound();
-//		g.setColor(Color.RED);
-//		g.drawRect(bound.x, bound.y, bound.width, bound.height);
 	}
 	
 	public void update() {
 		normalRunAnim.updateFrame();
-		downRunAnim.updateFrame();
 		if(posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if(state != DOWN_RUN) {
