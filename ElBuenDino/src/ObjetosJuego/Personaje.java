@@ -43,13 +43,13 @@ public class Personaje {
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
 		normalRunAnim = new Animaciones(90);
-		normalRunAnim.addFrame(Recursos.getResouceImage("data/angry.png"));
-		normalRunAnim.addFrame(Recursos.getResouceImage("data/angry.png"));
-		jumping = Recursos.getResouceImage("data/angry.png");
+		normalRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
+		normalRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
+		jumping = Recursos.getResouceImage("data/quake.png");
 		downRunAnim = new Animaciones(90);
-		downRunAnim.addFrame(Recursos.getResouceImage("data/angry.png"));
-		downRunAnim.addFrame(Recursos.getResouceImage("data/angry.png"));
-		deathImage = Recursos.getResouceImage("data/angry.png");
+		downRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
+		downRunAnim.addFrame(Recursos.getResouceImage("data/quake.png"));
+		deathImage = Recursos.getResouceImage("data/quake.png");
 		
 		try {
 			jumpSound =  Applet.newAudioClip(new URL("file","","data/jump.wav"));
