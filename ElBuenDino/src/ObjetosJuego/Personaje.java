@@ -24,6 +24,9 @@ public class Personaje {
 	private float speedX;
 	private float speedY;
 	private Rectangle rectBound;
+	private final double playerWidth = 1;
+	private final double playerRotationSpeed = speedX / (playerWidth * 0.5); 
+
 	
 	public int score = 0;
 	
@@ -83,9 +86,6 @@ public class Personaje {
 				g.drawImage(deathImage, (int) posX, (int) posY, null);
 				break;
 		}
-//		Rectangle bound = getBound();
-//		g.setColor(Color.RED);
-//		g.drawRect(bound.x, bound.y, bound.width, bound.height);
 	}
 	
 	public void update() {

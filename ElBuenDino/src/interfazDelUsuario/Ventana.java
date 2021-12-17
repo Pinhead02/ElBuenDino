@@ -5,13 +5,13 @@ import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
 	
-	public static final int SCREEN_WIDTH = 600;
+	public static final int SCREEN_WIDTH = 750;
 	private PantallaJuego pantallaJuego;
 	
 	public Ventana() {
 		super("ElBuenDino -GarciaBasualdoGiusti-");
-		setSize(SCREEN_WIDTH, 175);
-		setLocation(400, 200);
+		setSize(SCREEN_WIDTH, 500);
+		setLocation(450, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		
