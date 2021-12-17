@@ -10,7 +10,7 @@ import Utilidades.Recursos;
 
 public class AdministradorEnemigos {
 	
-	private BufferedImage cactus1;
+	private BufferedImage autoE;
 	private BufferedImage cactus2;
 	private Random rand;
 	
@@ -19,7 +19,7 @@ public class AdministradorEnemigos {
 	
 	public AdministradorEnemigos(Personaje mainCharacter) {
 		rand = new Random();
-		cactus1 = Recursos.getResouceImage("data/cactus1.png");
+		autoE = Recursos.getResouceImage("data/autoE.png");
 		cactus2 = Recursos.getResouceImage("data/cactus2.png");
 		enemigos = new ArrayList<Enemigos>();
 		this.personaje = mainCharacter;
@@ -48,7 +48,7 @@ public class AdministradorEnemigos {
 		// if (enemyType = getRandom)
 		int type = rand.nextInt(2);
 		if(type == 0) {
-			return new Cactus(personaje, 800, cactus1.getWidth() - 10, cactus1.getHeight() - 10, cactus1);
+			return new Cactus(personaje, 800, autoE.getWidth() - 10, autoE.getHeight() - 10, autoE);
 		} else {
 			return new Cactus(personaje, 800, cactus2.getWidth() - 10, cactus2.getHeight() - 10, cactus2);
 		}

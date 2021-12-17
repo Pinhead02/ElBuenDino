@@ -16,7 +16,7 @@ public class Nubes {
 	
 	public Nubes(int width, Personaje mainCharacter) {
 		this.personaje = mainCharacter;
-		nube = Recursos.getResouceImage("data/cloud.png");
+		nube = Recursos.getResouceImage("data/warGrande.png");
 		listNube = new ArrayList<ImageCloud>();
 		
 		ImageCloud imageCloud = new ImageCloud();

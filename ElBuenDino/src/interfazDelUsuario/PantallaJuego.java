@@ -62,7 +62,7 @@ public class PantallaJuego extends JPanel implements Runnable, KeyListener {
 	}
 
 	public void paint(Graphics g) {
-		g.setColor(Color.decode("#f7f7f7"));
+		g.setColor(Color.decode("#050000"));
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		switch (gameState) {
