@@ -48,7 +48,7 @@ public class AdministradorEnemigos {
 		// if (enemyType = getRandom)
 		int type = rand.nextInt(2);
 		if(type == 0) {
-			return new Cactus(personaje, 800, autoE.getWidth() - 10, autoE.getHeight() - 10, autoE);
+			return new Cactus(personaje, 800, autoE.getWidth() - 8, autoE.getHeight() - 8, autoE);
 		} else {
 			return new Cactus(personaje, 800, cactus2.getWidth() - 10, cactus2.getHeight() - 10, cactus2);
 		}

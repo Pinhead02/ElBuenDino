@@ -11,8 +11,8 @@ import Utilidades.Recursos;
 
 public class Personaje {
 
-	public static final int LAND_POSY = 80;
-	public static final float GRAVITY = 0.4f;
+	public static final int LAND_POSY = 60;
+	public static final float GRAVITY = 0.30f;
 	
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
