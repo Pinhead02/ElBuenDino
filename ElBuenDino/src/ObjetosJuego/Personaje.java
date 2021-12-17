@@ -1,4 +1,5 @@
 package ObjetosJuego;
+
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.Graphics;
@@ -13,47 +14,43 @@ public class Personaje {
 
 	public static final int LAND_POSY = 60;
 	public static final float GRAVITY = 0.30f;
-	
-	private static final int NORMAL_RUN = 0;
-	private static final int JUMPING = 1;
-	private static final int DOWN_RUN = 2;
-	private static final int DEATH = 3;
-	
+
+	private static final int CORRE = 0;
+	private static final int SALTAR = 1;
+	private static final int MUERE = 3;
+
 	private float posY;
 	private float posX;
 	private float speedX;
 	private float speedY;
 	private Rectangle rectBound;
 
-	
-	
 	public int score = 0;
-	
-	private int state = NORMAL_RUN;
-	
-	private Animaciones normalRunAnim;
-	private BufferedImage jumping;
-	private Animaciones downRunAnim;
-	private BufferedImage deathImage;
-	
+
+	private int state = CORRE;
+
+	private Animaciones corre;
+	private BufferedImage salta;
+	private BufferedImage explosionn;
+
 	private AudioClip jumpSound;
 	private AudioClip deadSound;
 	private AudioClip scoreUpSound;
-	
+
 	public Personaje() {
 		posX = 50;
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
-		normalRunAnim = new Animaciones(90);
-		normalRunAnim.addFrame(Recursos.getResouceImage("data/robot1.png"));
-		normalRunAnim.addFrame(Recursos.getResouceImage("data/robot2.png"));
-		jumping = Recursos.getResouceImage("data/robot4.png");
-		deathImage = Recursos.getResouceImage("data/explo.png");
-		
+		corre = new Animaciones(90);
+		corre.addFrame(Recursos.getResouceImage("data/robot1.png"));
+		corre.addFrame(Recursos.getResouceImage("data/robot2.png"));
+		salta = Recursos.getResouceImage("data/robot4.png");
+		explosionn = Recursos.getResouceImage("data/explo.png");
+
 		try {
-			jumpSound =  Applet.newAudioClip(new URL("file","","data/jump.wav"));
-			deadSound =  Applet.newAudioClip(new URL("file","","data/explosion.wav"));
-			scoreUpSound =  Applet.newAudioClip(new URL("file","","data/scoreup.wav"));
+			jumpSound = Applet.newAudioClip(new URL("file", "", "data/sonidoMario.wav"));
+			deadSound = Applet.newAudioClip(new URL("file", "", "data/explosion.wav"));
+			scoreUpSound = Applet.newAudioClip(new URL("file", "", "data/sonidoPuntitos.wav"));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -66,97 +63,84 @@ public class Personaje {
 	public void setSpeedX(int speedX) {
 		this.speedX = speedX;
 	}
-	
+
 	public void draw(Graphics g) {
-		switch(state) {
-			case NORMAL_RUN:
-				g.drawImage(normalRunAnim.getFrame(), (int) posX, (int) posY, null);
-				break;
-			case JUMPING:
-				g.drawImage(jumping, (int) posX, (int) posY, null);
-				break;
-			case DOWN_RUN:
-				g.drawImage(downRunAnim.getFrame(), (int) posX, (int) (posY + 20), null);
-				break;
-			case DEATH:
-				g.drawImage(deathImage, (int) posX, (int) posY, null);
-				break;
+		switch (state) {
+		case CORRE:
+			g.drawImage(corre.getFrame(), (int) posX, (int) posY, null);
+			break;
+		case SALTAR:
+			g.drawImage(salta, (int) posX, (int) posY, null);
+			break;
+		case MUERE:
+			g.drawImage(explosionn, (int) posX, (int) posY, null);
+			break;
 		}
 	}
-	
+
 	public void update() {
-		normalRunAnim.updateFrame();
-		if(posY >= LAND_POSY) {
+		corre.updateFrame();
+		if (posY >= LAND_POSY) {
 			posY = LAND_POSY;
-			if(state != DOWN_RUN) {
-				state = NORMAL_RUN;
+			{
+				state = CORRE;
 			}
 		} else {
 			speedY += GRAVITY;
 			posY += speedY;
 		}
 	}
-	
+
 	public void jump() {
-		if(posY >= LAND_POSY) {
-			if(jumpSound != null) {
+		if (posY >= LAND_POSY) {
+			if (jumpSound != null) {
 				jumpSound.play();
 			}
 			speedY = -7.5f;
 			posY += speedY;
-			state = JUMPING;
+			state = SALTAR;
 		}
 	}
-	
+
 	public void down(boolean isDown) {
-		if(state == JUMPING) {
+		if (state == SALTAR) {
 			return;
 		}
-		if(isDown) {
-			state = DOWN_RUN;
-		} else {
-			state = NORMAL_RUN;
+		
+			state = CORRE;
 		}
-	}
-	
+
 	public Rectangle getBound() {
 		rectBound = new Rectangle();
-		if(state == DOWN_RUN) {
-			rectBound.x = (int) posX + 5;
-			rectBound.y = (int) posY + 20;
-			rectBound.width = downRunAnim.getFrame().getWidth() - 10;
-			rectBound.height = downRunAnim.getFrame().getHeight();
-		} else {
-			rectBound.x = (int) posX + 5;
-			rectBound.y = (int) posY;
-			rectBound.width = normalRunAnim.getFrame().getWidth() - 10;
-			rectBound.height = normalRunAnim.getFrame().getHeight();
-		}
+
+		rectBound.x = (int) posX + 5;
+		rectBound.y = (int) posY;
+		rectBound.width = corre.getFrame().getWidth() - 10;
+		rectBound.height = corre.getFrame().getHeight();
 		return rectBound;
 	}
-	
+
 	public void dead(boolean isDeath) {
-		if(isDeath) {
-			state = DEATH;
+		if (isDeath) {
+			state = MUERE;
 		} else {
-			state = NORMAL_RUN;
+			state = CORRE;
 		}
 	}
-	
+
 	public void reset() {
 		posY = LAND_POSY;
 	}
-	
+
 	public void playDeadSound() {
 		deadSound.play();
 	}
-	
+
 	public void upScore() {
 		score += 20;
-		if(score % 100 == 0) {
+		if (score % 100 == 0) {
 			scoreUpSound.play();
 		}
 	}
-	
-}
 
+}

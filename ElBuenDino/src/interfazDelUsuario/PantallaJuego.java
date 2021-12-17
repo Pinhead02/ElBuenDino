@@ -29,15 +29,15 @@ public class PantallaJuego extends JPanel implements Runnable, KeyListener {
 
 	private int gameState = START_GAME_STATE;
 
-	private BufferedImage replayButtonImage;
-	private BufferedImage gameOverButtonImage;
+	private BufferedImage barritaE;
+	private BufferedImage probaOtraVez;
 
 	public PantallaJuego() {
 		personaje = new Personaje();
 		base = new Base(Ventana.SCREEN_WIDTH, personaje);
 		personaje.setSpeedX(4);
-		replayButtonImage = Recursos.getResouceImage("data/barraEspaciadoraz.png");
-		gameOverButtonImage = Recursos.getResouceImage("data/ProbaOtraVez_2.png");
+		barritaE = Recursos.getResouceImage("data/barraEspaciadoraz.png");
+		probaOtraVez = Recursos.getResouceImage("data/ProbaOtraVez_2.png");
 		administradorEnemigos = new AdministradorEnemigos(personaje);
 		nubes = new Nubes(Ventana.SCREEN_WIDTH, personaje);
 	}
@@ -78,8 +78,8 @@ public class PantallaJuego extends JPanel implements Runnable, KeyListener {
 			g.setColor(Color.WHITE);
 			g.drawString("Puntuación " + personaje.score, 500, 20);
 			if (gameState == GAME_OVER_STATE) {
-				g.drawImage(gameOverButtonImage, 200, 30, null);
-				g.drawImage(replayButtonImage, 283, 50, null);
+				g.drawImage(probaOtraVez, 200, 30, null);
+				g.drawImage(barritaE, 283, 50, null);
 				
 			}
 			break;
