@@ -13,22 +13,22 @@ public class Base {
 	public static final int LAND_POSY = 105;
 	
 	private List<ImageLand> listLand;
-	private BufferedImage qfondo;
-	private BufferedImage qfondo2;
-	private BufferedImage qfondo3;
+	private BufferedImage fondoV1;
+	private BufferedImage fondoV2;
+	private BufferedImage fondoV3;
 	
 	private Personaje personaje;
 	
 	public Base(int width, Personaje mainCharacter) {
 		this.personaje = mainCharacter;
-		qfondo = Recursos.getResouceImage("data/qfondo.png");
-		qfondo2 = Recursos.getResouceImage("data/qfondo2.png");
-		qfondo3 = Recursos.getResouceImage("data/qfondo3.png");
-		int numberOfImageLand = width / qfondo.getWidth() + 2;
+		fondoV1 = Recursos.getResouceImage("data/fondoV1.png");
+		fondoV2 = Recursos.getResouceImage("data/fondoV2.png");
+		fondoV3 = Recursos.getResouceImage("data/fondoV3.png");
+		int numberOfImageLand = width / fondoV1.getWidth() + 2;
 		listLand = new ArrayList<ImageLand>();
 		for(int i = 0; i < numberOfImageLand; i++) {
 			ImageLand imageLand = new ImageLand();
-			imageLand.posX = i * qfondo.getWidth();
+			imageLand.posX = i * fondoV1.getWidth();
 			setImageLand(imageLand);
 			listLand.add(imageLand);
 		}
@@ -41,12 +41,12 @@ public class Base {
 		float previousPosX = firstElement.posX;
 		while(itr.hasNext()) {
 			ImageLand element = itr.next();
-			element.posX = previousPosX + qfondo.getWidth();
+			element.posX = previousPosX + fondoV1.getWidth();
 			previousPosX = element.posX;
 		}
-		if(firstElement.posX < -qfondo.getWidth()) {
+		if(firstElement.posX < -fondoV1.getWidth()) {
 			listLand.remove(firstElement);
-			firstElement.posX = previousPosX + qfondo.getWidth();
+			firstElement.posX = previousPosX + fondoV1.getWidth();
 			setImageLand(firstElement);
 			listLand.add(firstElement);
 		}
@@ -55,11 +55,11 @@ public class Base {
 	private void setImageLand(ImageLand imgLand) {
 		int typeLand = getTypeOfLand();
 		if(typeLand == 1) {
-			imgLand.image = qfondo;
+			imgLand.image = fondoV1;
 		} else if(typeLand == 3) {
-			imgLand.image = qfondo3;
+			imgLand.image = fondoV3;
 		} else {
-			imgLand.image = qfondo2;
+			imgLand.image = fondoV2;
 		}
 	}
 	

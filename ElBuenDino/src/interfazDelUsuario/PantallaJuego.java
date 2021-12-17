@@ -62,7 +62,7 @@ public class PantallaJuego extends JPanel implements Runnable, KeyListener {
 	}
 
 	public void paint(Graphics g) {
-		g.setColor(Color.decode("#050000"));
+		g.setColor(Color.decode("#570580"));
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		switch (gameState) {
@@ -75,7 +75,7 @@ public class PantallaJuego extends JPanel implements Runnable, KeyListener {
 			base.draw(g);
 			administradorEnemigos.draw(g);
 			personaje.draw(g);
-			g.setColor(Color.BLACK);
+			g.setColor(Color.WHITE);
 			g.drawString("HI " + personaje.score, 500, 20);
 			if (gameState == GAME_OVER_STATE) {
 				g.drawImage(gameOverButtonImage, 200, 30, null);
