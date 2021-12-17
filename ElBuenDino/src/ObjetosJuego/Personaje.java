@@ -45,14 +45,14 @@ public class Personaje {
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
 		normalRunAnim = new Animaciones(90);
-		normalRunAnim.addFrame(Recursos.getResouceImage("data/bolita.png"));
-		normalRunAnim.addFrame(Recursos.getResouceImage("data/bolita.png"));
-		jumping = Recursos.getResouceImage("data/bolita.png");
-		deathImage = Recursos.getResouceImage("data/bolita.png");
+		normalRunAnim.addFrame(Recursos.getResouceImage("data/robot1.png"));
+		normalRunAnim.addFrame(Recursos.getResouceImage("data/robot2.png"));
+		jumping = Recursos.getResouceImage("data/robot4.png");
+		deathImage = Recursos.getResouceImage("data/explo.png");
 		
 		try {
 			jumpSound =  Applet.newAudioClip(new URL("file","","data/jump.wav"));
-			deadSound =  Applet.newAudioClip(new URL("file","","data/dead.wav"));
+			deadSound =  Applet.newAudioClip(new URL("file","","data/explosion.wav"));
 			scoreUpSound =  Applet.newAudioClip(new URL("file","","data/scoreup.wav"));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

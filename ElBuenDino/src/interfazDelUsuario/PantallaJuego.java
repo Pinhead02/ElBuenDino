@@ -36,8 +36,8 @@ public class PantallaJuego extends JPanel implements Runnable, KeyListener {
 		personaje = new Personaje();
 		base = new Base(Ventana.SCREEN_WIDTH, personaje);
 		personaje.setSpeedX(4);
-		replayButtonImage = Recursos.getResouceImage("data/replay_button.png");
-		gameOverButtonImage = Recursos.getResouceImage("data/gameover_text.png");
+		replayButtonImage = Recursos.getResouceImage("data/barraEspaciadoraz.png");
+		gameOverButtonImage = Recursos.getResouceImage("data/ProbaOtraVez_2.png");
 		administradorEnemigos = new AdministradorEnemigos(personaje);
 		nubes = new Nubes(Ventana.SCREEN_WIDTH, personaje);
 	}
