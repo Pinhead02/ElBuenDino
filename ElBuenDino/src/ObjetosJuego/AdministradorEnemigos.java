@@ -11,7 +11,7 @@ import Utilidades.Recursos;
 public class AdministradorEnemigos {
 	
 	private BufferedImage pincheChico;
-	private BufferedImage cactus2;
+	private BufferedImage pinchesChicos3;
 	private Random rand;
 	
 	private List<Enemigos> enemigos;
@@ -20,7 +20,7 @@ public class AdministradorEnemigos {
 	public AdministradorEnemigos(Personaje mainCharacter) {
 		rand = new Random();
 		pincheChico = Recursos.getResouceImage("data/pincheChico.png");
-		cactus2 = Recursos.getResouceImage("data/cactus2.png");
+		pinchesChicos3 = Recursos.getResouceImage("data/pinchesChicos3.png");
 		enemigos = new ArrayList<Enemigos>();
 		this.personaje = mainCharacter;
 		enemigos.add(createEnemigo());
@@ -48,9 +48,9 @@ public class AdministradorEnemigos {
 		// if (enemyType = getRandom)
 		int type = rand.nextInt(2);
 		if(type == 0) {
-			return new Cactus(personaje, 800, pincheChico.getWidth() - 8, pincheChico.getHeight() - 8, pincheChico);
+			return new PinchesMalos(personaje, 800, pincheChico.getWidth() - 8, pincheChico.getHeight() - 8, pincheChico);
 		} else {
-			return new Cactus(personaje, 800, cactus2.getWidth() - 10, cactus2.getHeight() - 10, cactus2);
+			return new PinchesMalos(personaje, 800, pinchesChicos3.getWidth() - 10, pinchesChicos3.getHeight() - 10, pinchesChicos3);
 		}
 	}
 	

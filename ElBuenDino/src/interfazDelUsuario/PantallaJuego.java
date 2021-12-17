@@ -76,7 +76,7 @@ public class PantallaJuego extends JPanel implements Runnable, KeyListener {
 			administradorEnemigos.draw(g);
 			personaje.draw(g);
 			g.setColor(Color.WHITE);
-			g.drawString("HI " + personaje.score, 500, 20);
+			g.drawString("Puntuación " + personaje.score, 500, 20);
 			if (gameState == GAME_OVER_STATE) {
 				g.drawImage(gameOverButtonImage, 200, 30, null);
 				g.drawImage(replayButtonImage, 283, 50, null);

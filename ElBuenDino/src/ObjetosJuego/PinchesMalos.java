@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public class Cactus extends Enemigos {
+public class PinchesMalos extends Enemigos {
 	
 	public static final int Y_LAND = 105;
 	
@@ -18,7 +18,7 @@ public class Cactus extends Enemigos {
 	
 	private Rectangle rectBound;
 	
-	public Cactus(Personaje mainCharacter, int posX, int width, int height, BufferedImage image) {
+	public PinchesMalos(Personaje mainCharacter, int posX, int width, int height, BufferedImage image) {
 		this.posX = posX;
 		this.width = width;
 		this.height = height;
